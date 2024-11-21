@@ -1,0 +1,1 @@
+This is the full code that I built in RobotC for a claw machine project. The machine has the ability to detect coins that were inserted into a slot, the claw can move around using a joystick, and there is an automated drop, grab, lift, and homing procedure. The final step of the process is to release the claw and (hopefully) receive your prize :)
