@@ -10,7 +10,7 @@ void home();
 bool took_too_long(float current_time);
 
 
-int coin_sense()
+int coin_sense() //detects whether a coin was inserted into the slot
 {
 	int additions = 0;
 	clearTimer(T1);
@@ -31,7 +31,6 @@ int coin_sense()
 		{
 			displayTextLine(3, "Coin detected...");
 			displayTextLine(4, "Time left to put coins: %d", (abs(time1[T1]-COIN_INPUT_TIME)/1000.0));
-			setSoundVolume(100);
 			if (time1[T1] >= COIN_INPUT_TIME)
 				break;
 		}
@@ -46,7 +45,7 @@ int coin_sense()
 }
 
 
-int joy()
+int joy() //converts button presses into integer values
 {
 	if (getButtonPress(buttonAny))
 	{
@@ -66,7 +65,7 @@ int joy()
 }
 
 
-void xyMove(int button)
+void xyMove(int button) 
 {
 	int y_limit = -25000;
 	int x_limit = 1700;
@@ -103,7 +102,7 @@ void grab_procedure()
 }
 
 
-void home()
+void home() //homing procedure
 {
 	while (nMotorEncoder(motorC) > 0)
 	{
@@ -187,7 +186,7 @@ task main()
 
 				while (getButtonPress(buttonEnter))
 				{}
-				if (time1[T2] < 3000 && (nMotorEncoder[motorA] > 800 || nMotorEncoder[motorB] < -19000))
+				if (time1[T2] < 3000 && (nMotorEncoder[motorA] > 800 || nMotorEncoder[motorB] < -19000)) //makes sure it doesn't drop while above chute
 				{
 					grab_procedure();
 					home();
